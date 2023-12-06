@@ -9,6 +9,7 @@ class MovieModel with _$MovieModel {
     required bool adult,
     required String backdropPath,
     required String originalTitle,
+    required String overview,
     required double voteAverage,
   }) = _MovieModel;
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../models/movie_model.dart';
 import '../../../utils/build_context_extension.dart';
 import '../../../utils/image_url_extension.dart';
+import '../../detail/detail_page.dart';
 
 class RowListWidget extends StatelessWidget {
   final List<MovieModel> movies;
@@ -39,31 +40,37 @@ class RowListWidget extends StatelessWidget {
               itemBuilder: (_, index) {
                 final movie = movies[index];
 
-                return Padding(
-                  padding: EdgeInsets.only(left: index == 0 ? 0 : 12.0),
-                  child: SizedBox(
-                    width: context.screenWidth * .3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(6.0),
-                          child: CachedNetworkImage(
-                            imageUrl: movie.backdropPath.generateUrl,
-                            height: context.screenHeight * .15,
-                            fit: BoxFit.cover,
+                return GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => DetailPage(movie: movie)),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: index == 0 ? 0 : 12.0),
+                    child: SizedBox(
+                      width: context.screenWidth * .3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(6.0),
+                            child: CachedNetworkImage(
+                              imageUrl: movie.backdropPath.generateUrl,
+                              height: context.screenHeight * .15,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 6.0),
-                        Text(
-                          movie.originalTitle,
-                          style: const TextStyle(
-                            color: Colors.black,
+                          const SizedBox(height: 6.0),
+                          Text(
+                            movie.originalTitle,
+                            style: const TextStyle(
+                              color: Colors.black,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );

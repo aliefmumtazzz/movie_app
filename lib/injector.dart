@@ -3,7 +3,9 @@ import 'package:get_it/get_it.dart';
 import 'bloc/now_playing/movie_now_playing_cubit.dart';
 import 'bloc/popular/movie_popular_cubit.dart';
 import 'bloc/upcoming/movie_upcoming_cubit.dart';
-import 'data/local/now_playing_local_service.dart';
+import 'data/local/now_playing_movie_dao_hive.dart';
+import 'data/local/popular_moviee_dao_hive.dart';
+import 'data/local/upcoming_movie_dao_hive.dart';
 import 'data/remote/base_service.dart';
 import 'data/remote/movie_service.dart';
 import 'repositories/movie_repository_impl.dart';
@@ -19,9 +21,9 @@ class Injector {
   }
 
   void _onRegisterLocalService() {
-    getIt.registerLazySingleton<NowPlayingLocalService>(
-      () => NowPlayingLocalService(),
-    );
+    getIt.registerSingleton(NowPlayingMovieDaoHive.create());
+    getIt.registerSingleton(PopularMovieDaoHive.create());
+    getIt.registerSingleton(UpcomingMovieDaoHive.create());
   }
 
   void _onRegisterRemoteService() {
@@ -52,9 +54,9 @@ class Injector {
   }
 
   void register() {
+    _onRegisterLocalService();
     _onRegisterRepository();
     _onRegisterRemoteService();
-    _onRegisterLocalService();
     _onRegisterCubit();
   }
 }

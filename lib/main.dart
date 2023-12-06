@@ -13,6 +13,7 @@ import 'pages/home/home_page.dart';
 void main() {
   runZonedGuarded<Future<void>>(
     () async {
+      WidgetsFlutterBinding.ensureInitialized();
       await Hive.initFlutter();
       await Injector.create();
 

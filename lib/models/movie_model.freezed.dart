@@ -23,6 +23,7 @@ mixin _$MovieModel {
   bool get adult => throw _privateConstructorUsedError;
   String get backdropPath => throw _privateConstructorUsedError;
   String get originalTitle => throw _privateConstructorUsedError;
+  String get overview => throw _privateConstructorUsedError;
   double get voteAverage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $MovieModelCopyWith<$Res> {
       {bool adult,
       String backdropPath,
       String originalTitle,
+      String overview,
       double voteAverage});
 }
 
@@ -60,6 +62,7 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
     Object? adult = null,
     Object? backdropPath = null,
     Object? originalTitle = null,
+    Object? overview = null,
     Object? voteAverage = null,
   }) {
     return _then(_value.copyWith(
@@ -74,6 +77,10 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
       originalTitle: null == originalTitle
           ? _value.originalTitle
           : originalTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
               as String,
       voteAverage: null == voteAverage
           ? _value.voteAverage
@@ -95,6 +102,7 @@ abstract class _$$MovieModelImplCopyWith<$Res>
       {bool adult,
       String backdropPath,
       String originalTitle,
+      String overview,
       double voteAverage});
 }
 
@@ -112,6 +120,7 @@ class __$$MovieModelImplCopyWithImpl<$Res>
     Object? adult = null,
     Object? backdropPath = null,
     Object? originalTitle = null,
+    Object? overview = null,
     Object? voteAverage = null,
   }) {
     return _then(_$MovieModelImpl(
@@ -126,6 +135,10 @@ class __$$MovieModelImplCopyWithImpl<$Res>
       originalTitle: null == originalTitle
           ? _value.originalTitle
           : originalTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
               as String,
       voteAverage: null == voteAverage
           ? _value.voteAverage
@@ -142,6 +155,7 @@ class _$MovieModelImpl implements _MovieModel {
       {required this.adult,
       required this.backdropPath,
       required this.originalTitle,
+      required this.overview,
       required this.voteAverage});
 
   factory _$MovieModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -154,11 +168,13 @@ class _$MovieModelImpl implements _MovieModel {
   @override
   final String originalTitle;
   @override
+  final String overview;
+  @override
   final double voteAverage;
 
   @override
   String toString() {
-    return 'MovieModel(adult: $adult, backdropPath: $backdropPath, originalTitle: $originalTitle, voteAverage: $voteAverage)';
+    return 'MovieModel(adult: $adult, backdropPath: $backdropPath, originalTitle: $originalTitle, overview: $overview, voteAverage: $voteAverage)';
   }
 
   @override
@@ -171,14 +187,16 @@ class _$MovieModelImpl implements _MovieModel {
                 other.backdropPath == backdropPath) &&
             (identical(other.originalTitle, originalTitle) ||
                 other.originalTitle == originalTitle) &&
+            (identical(other.overview, overview) ||
+                other.overview == overview) &&
             (identical(other.voteAverage, voteAverage) ||
                 other.voteAverage == voteAverage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, adult, backdropPath, originalTitle, voteAverage);
+  int get hashCode => Object.hash(
+      runtimeType, adult, backdropPath, originalTitle, overview, voteAverage);
 
   @JsonKey(ignore: true)
   @override
@@ -199,6 +217,7 @@ abstract class _MovieModel implements MovieModel {
       {required final bool adult,
       required final String backdropPath,
       required final String originalTitle,
+      required final String overview,
       required final double voteAverage}) = _$MovieModelImpl;
 
   factory _MovieModel.fromJson(Map<String, dynamic> json) =
@@ -210,6 +229,8 @@ abstract class _MovieModel implements MovieModel {
   String get backdropPath;
   @override
   String get originalTitle;
+  @override
+  String get overview;
   @override
   double get voteAverage;
   @override

@@ -5,6 +5,7 @@ import '../../bloc/now_playing/movie_now_playing_cubit.dart';
 import '../../bloc/popular/movie_popular_cubit.dart';
 import '../../bloc/upcoming/movie_upcoming_cubit.dart';
 import '../../injector.dart';
+import '../search/search_page.dart';
 import 'widget/row_list_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -76,6 +77,14 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const SearchPage()),
+        ),
+        backgroundColor: Colors.blueAccent,
+        child: const Icon(Icons.search, color: Colors.white),
       ),
     );
   }
