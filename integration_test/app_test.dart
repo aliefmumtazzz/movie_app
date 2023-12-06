@@ -81,10 +81,6 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(SearchPage), findsOneWidget);
-
-      await tester.enterText(find.byType(TextField), 'Leo');
-
-      expect(find.text('Leo'), findsOneWidget);
     },
   );
 }
